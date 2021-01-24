@@ -7,6 +7,7 @@ const multer = require("multer");
 const { TesseractWorker } = require("tesseract.js");
 // worker analyzes images
 const worker = new TesseractWorker();
+const { db, Copy } = require("./db");
 
 // storage
 const storage = multer.diskStorage({
@@ -28,6 +29,13 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/copies", async (req, res, next) => {
+  const copies = await Copy.findAll({
+    attributes: ["text"],
+  });
+  res.json(copies);
+});
+
 app.post("/upload", (req, res) => {
   upload(req, res, (err) => {
     fs.readFile(`./uploads/${req.file.originalname}`, (err, data) => {
@@ -40,6 +48,9 @@ app.post("/upload", (req, res) => {
         })
         .then((result) => {
           // res.send(result.text);
+          Copy.create({
+            text: result.text,
+          });
           res.redirect("/download");
         })
         .finally(() => worker.terminate());
@@ -58,4 +69,12 @@ app.get("/download", (req, res) => {
 
 // start up our server
 const PORT = 5000 || process.env.PORT;
-app.listen(PORT, () => console.log(`Hey, I'm running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Hey, I'm running on port ${PORT}`));
+
+db.sync() // if you update your db schemas, make sure you drop the tables first and then recreate them
+  .then(() => {
+    console.log("db synced");
+    app.listen(PORT, () =>
+      console.log(`studiously serving silly sounds on port ${PORT}`)
+    );
+  });
