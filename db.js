@@ -16,6 +16,9 @@ const Copy = db.define("copy", {
   text: {
     type: Sequelize.TEXT,
   },
+  language: {
+    type: Sequelize.STRING,
+  },
 });
 
 module.exports = {

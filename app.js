@@ -31,9 +31,12 @@ app.get("/", (req, res) => {
 
 app.get("/copies", async (req, res, next) => {
   const copies = await Copy.findAll({
-    attributes: ["text"],
+    attributes: ["text", "language"],
   });
   res.json(copies);
+  // this is causing unhandledPromiseRejectionWarning error
+  // try to make this a navbar link instead
+  res.redirect("/copies");
 });
 
 app.post("/upload", (req, res) => {
@@ -50,6 +53,29 @@ app.post("/upload", (req, res) => {
           // res.send(result.text);
           Copy.create({
             text: result.text,
+            language: "English",
+          });
+          res.redirect("/download");
+        })
+        .finally(() => worker.terminate());
+    });
+  });
+});
+
+app.post("/upload-spanish", (req, res) => {
+  upload(req, res, (err) => {
+    fs.readFile(`./uploads/${req.file.originalname}`, (err, data) => {
+      if (err) return console.log("This is your error", err);
+
+      worker
+        .recognize(data, "spa", { tessjs_create_pdf: "1" })
+        .progress((progress) => {
+          console.log(progress);
+        })
+        .then((result) => {
+          Copy.create({
+            text: result.text,
+            language: "Spanish",
           });
           res.redirect("/download");
         })

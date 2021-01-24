@@ -14,10 +14,24 @@
         Upload an image with text you want to copy and convert it to a readable
         PDF.
       </h4>
-      <!-- refers to upload route, not folder -->
+      <!-- refers to upload route, not upload folder -->
+      <h3>English</h3>
       <form action="/upload" method="POST" enctype="multipart/form-data">
         <input type="file" name="avatar" />
         <button type="submit">Convert</button>
+      </form>
+      <h3>Spanish</h3>
+      <form
+        action="/upload-Spanish"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <input type="file" name="avatar" />
+        <button type="submit">Convert</button>
+      </form>
+      <form action="/copies" method="GET">
+        <!-- <input type="file" name="avatar" /> -->
+        <button type="submit">See All Converted Texts</button>
       </form>
     </div>
   </body>
