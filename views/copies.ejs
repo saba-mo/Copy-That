@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> </head>
+  <head> 
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+  </head>
   <body class="container">
     <header><%- include('./header'); %></header>
 
@@ -9,7 +17,7 @@
           <div class="well">
             <h2>Searchable Copies</h2>
             <p><%= tagline %></p>
-            <ul>
+            <ul id="text">
               <% copies.forEach(function(copy) { %>
               <li><%= copy.text %></br><strong><%= copy.language %></strong></li>
               <% }); %>
