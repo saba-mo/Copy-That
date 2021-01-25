@@ -29,6 +29,7 @@ if (process.env.DATABASE_URL) {
     ssl: true,
     dialectOptions: {
       ssl: true,
+      rejectUnauthorized: false,
     },
   });
 } else {
