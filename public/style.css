@@ -63,10 +63,17 @@ p {
   justify-content: center;
 }
 
+h4 {
+  width: 55%;
+  align-self: center;
+}
+
 #text {
   font-family: "Open Sans Condensed";
   display: flex;
   flex-direction: column;
+  margin-left: 150px;
+  margin-right: 150px;
 }
 
 li {
@@ -110,4 +117,14 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+select {
+  align-self: center;
+  width: 7%;
+}
+
+.well {
+  display: flex;
+  flex-direction: column;
 }

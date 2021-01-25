@@ -17,6 +17,12 @@
           <div class="well">
             <h2>Searchable Copies</h2>
             <p><%= tagline %></p>
+            <select>
+              <option >All</option>
+              <option >English</option>
+              <option >Spanish</option>
+              <option >Persian</option>  
+            </select>
             <ul id="text">
               <% copies.forEach(function(copy) { %>
               <li><%= copy.text %></br><strong><%= copy.language %></strong></li>
