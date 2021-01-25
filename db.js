@@ -10,6 +10,12 @@ console.log(chalk.yellow(`Opening database connection to ${dbName}`));
 
 const db = new Sequelize(`postgres://localhost:5432/${dbName}`, {
   logging: false,
+  dialect: "postgres",
+  protocol: "postgres",
+  ssl: true,
+  dialectOptions: {
+    ssl: true,
+  },
 });
 
 const Copy = db.define("copy", {

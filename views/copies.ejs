@@ -17,11 +17,13 @@
           <div class="well">
             <h2>Searchable Copies</h2>
             <p><%= tagline %></p>
-            <select>
-              <option >All</option>
-              <option >English</option>
-              <option >Spanish</option>
-              <option >Persian</option>  
+            <label for="language">Choose a language:</label>
+
+            <select name='language' id='language'>
+              <option value='all' >All</option>
+              <option value='English'>English</option>
+              <option value='Spanish'>Spanish</option>
+              <option value='Persian'>Persian</option>  
             </select>
             <ul id="text">
               <% copies.forEach(function(copy) { %>
