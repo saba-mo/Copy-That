@@ -1,7 +1,7 @@
 h1 {
   display: flex;
   justify-content: center;
-  background-color: #f3dfc1;
+  /* background-color: #f3dfc1; */
   width: 100%;
   height: 2em;
   align-items: center;
@@ -40,9 +40,18 @@ a:hover {
 }
 
 body {
-  background-color: #f3dfc1;
+  /* background-color: #f3dfc1; */
   margin: 0px;
   font-family: "special elite";
+}
+
+html {
+  background: url(http://i.stack.imgur.com/kb0Zm.jpg) no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 h4,
@@ -65,7 +74,8 @@ li {
 }
 
 .English,
-.Spanish {
+.Spanish,
+.Persian {
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid black;

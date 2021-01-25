@@ -86,6 +86,28 @@ app.post("/upload-spanish", (req, res) => {
   });
 });
 
+app.post("/upload-Persian", (req, res) => {
+  upload(req, res, (err) => {
+    fs.readFile(`./uploads/${req.file.originalname}`, (err, data) => {
+      if (err) return console.log("This is your error", err);
+
+      worker
+        .recognize(data, "fas", { tessjs_create_pdf: "1" })
+        .progress((progress) => {
+          console.log(progress);
+        })
+        .then((result) => {
+          Copy.create({
+            text: result.text,
+            language: "Persian",
+          });
+          res.redirect("/download");
+        })
+        .finally(() => worker.terminate());
+    });
+  });
+});
+
 // downloads latest file that was uploaded
 app.get("/download", (req, res) => {
   const file = `${__dirname}/tesseract.js-ocr-result.pdf`;
