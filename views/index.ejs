@@ -18,41 +18,43 @@
   </head>
   <header><%- include('./header');%></header>
   <body>
-    <div>
+    <div id="main-page">
       <h1>Copy That</h1>
       <h4>
         Upload an image with text you want to copy and convert it to a readable
         PDF. You can also see your converted texts on the Copies page.
       </h4>
       <!-- refers to upload route, not upload folder -->
-      <div class="English">
-        <h3>English</h3>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-          <input type="file" name="avatar" />
-          <button type="submit">Convert</button>
-        </form>
-      </div>
-      <div class="Spanish">
-        <h3>Spanish</h3>
-        <form
-          action="/upload-Spanish"
-          method="POST"
-          enctype="multipart/form-data"
-        >
-          <input type="file" name="avatar" />
-          <button type="submit">Convert</button>
-        </form>
-      </div>
-      <div class="Persian">
-        <h3>Farsi</h3>
-        <form
-          action="/upload-Persian"
-          method="POST"
-          enctype="multipart/form-data"
-        >
-          <input type="file" name="avatar" />
-          <button type="submit">Convert</button>
-        </form>
+      <div id="options">
+        <div class="English">
+          <h3>English</h3>
+          <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="avatar" />
+            <button type="submit">Convert</button>
+          </form>
+        </div>
+        <div class="Spanish">
+          <h3>Spanish</h3>
+          <form
+            action="/upload-Spanish"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <input type="file" name="avatar" />
+            <button type="submit">Convert</button>
+          </form>
+        </div>
+        <div class="Persian">
+          <h3>Farsi</h3>
+          <form
+            action="/upload-Persian"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <input type="file" name="avatar" />
+            <button type="submit">Convert</button>
+          </form>
+        </div>
       </div>
     </div>
   </body>
