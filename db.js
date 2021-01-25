@@ -8,15 +8,35 @@ const chalk = require("chalk");
 const dbName = process.env.NODE_ENV === "test" ? `${pkg.name}_test` : pkg.name;
 console.log(chalk.yellow(`Opening database connection to ${dbName}`));
 
-const db = new Sequelize(`postgres://localhost:5432/${dbName}`, {
-  logging: false,
-  dialect: "postgres",
-  protocol: "postgres",
-  ssl: true,
-  dialectOptions: {
+// const db = new Sequelize(`postgres://localhost:5432/${dbName}`, {
+//   logging: false,
+//   dialect: "postgres",
+//   protocol: "postgres",
+//   ssl: true,
+//   dialectOptions: {
+//     ssl: true,
+//   },
+// });
+
+let db;
+
+if (process.env.DATABASE_URL) {
+  //heroku configuration
+  db = new Sequelize(process.env.DATABASE_URL, {
+    logging: false,
+    dialect: "postgres",
+    protocol: "postgres",
     ssl: true,
-  },
-});
+    dialectOptions: {
+      ssl: true,
+    },
+  });
+} else {
+  //local configuration
+  db = new Sequelize(`postgres://localhost:5432/${dbName}`, {
+    logging: false,
+  });
+}
 
 const Copy = db.define("copy", {
   text: {
