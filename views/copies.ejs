@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+  <body class="container">
+    <header><%- include('./header'); %></header>
+
+    <main>
+        <div class="col-sm-4">
+          <div class="well">
+            <h2>Searchable Copies</h2>
+            <p><%= tagline %></p>
+            <ul>
+              <% copies.forEach(function(copy) { %>
+              <li><%= copy.text %></br><strong><%= copy.language %></strong></li>
+              <% }); %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

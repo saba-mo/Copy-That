@@ -13,3 +13,15 @@ form {
   display: flex;
   justify-content: center;
 }
+
+nav {
+  background-color: bisque;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navbar {
+  background-color: bisque;
+  display: flex;
+  justify-content: space-evenly;
+}

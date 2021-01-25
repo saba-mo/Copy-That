@@ -33,10 +33,12 @@ app.get("/copies", async (req, res, next) => {
   const copies = await Copy.findAll({
     attributes: ["text", "language"],
   });
-  res.json(copies);
-  // this is causing unhandledPromiseRejectionWarning error
-  // try to make this a navbar link instead
-  res.redirect("/copies");
+  const tagline = "Here are your searchable converted texts.";
+  // res.json(copies);
+  res.render("copies", {
+    copies: copies,
+    tagline: tagline,
+  });
 });
 
 app.post("/upload", (req, res) => {
@@ -89,9 +91,6 @@ app.get("/download", (req, res) => {
   const file = `${__dirname}/tesseract.js-ocr-result.pdf`;
   res.download(file);
 });
-// app.get("/uploads", (req, res) => {
-//   console.log("hey");
-// });
 
 // start up our server
 const PORT = 5000 || process.env.PORT;

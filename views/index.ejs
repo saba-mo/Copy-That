@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/style.css" />
     <title>Let Me Copy That</title>
   </head>
+  <header><%- include('./header');%></header>
   <body>
     <div>
       <h1>Let Me Copy That</h1>
@@ -28,10 +29,6 @@
       >
         <input type="file" name="avatar" />
         <button type="submit">Convert</button>
-      </form>
-      <form action="/copies" method="GET">
-        <!-- <input type="file" name="avatar" /> -->
-        <button type="submit">See All Converted Texts</button>
       </form>
     </div>
   </body>
