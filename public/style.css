@@ -85,11 +85,9 @@ li {
 .English,
 .Spanish,
 .Persian {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
   margin-bottom: 1em;
   padding-bottom: 1.5em;
+  align-self: center;
 }
 
 .English {
@@ -121,7 +119,11 @@ li {
 
 select {
   align-self: center;
-  width: 7%;
+  width: 12%;
+}
+
+label {
+  align-self: center;
 }
 
 .well {

@@ -34,7 +34,6 @@ app.get("/copies", async (req, res, next) => {
     attributes: ["text", "language"],
   });
   const tagline = "Here are your searchable converted texts.";
-  // res.json(copies);
   res.render("copies", {
     copies: copies,
     tagline: tagline,
@@ -52,7 +51,7 @@ app.post("/upload", (req, res) => {
           console.log(progress);
         })
         .then((result) => {
-          // res.send(result.text);
+          // res.send(result.text) would show result in browser
           Copy.create({
             text: result.text,
             language: "English",
@@ -116,7 +115,6 @@ app.get("/download", (req, res) => {
 
 // start up our server
 const PORT = 5000 || process.env.PORT;
-// app.listen(PORT, () => console.log(`Hey, I'm running on port ${PORT}`));
 
 db.sync() // if you update your db schemas, make sure you drop the tables first and then recreate them
   .then(() => {
