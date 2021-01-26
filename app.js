@@ -114,7 +114,7 @@ app.get("/download", (req, res) => {
 });
 
 // start up our server
-const PORT = 5000 || process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 db.sync() // if you update your db schemas, make sure you drop the tables first and then recreate them
   .then(() => {
